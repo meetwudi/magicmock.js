@@ -84,26 +84,26 @@ mockedMethod(1, 2, 3); // => 100
 `options.sideEffect` allows `mockedMethod` returns different values depending on side effects from outside world. If `sideEffect` was defined, `returnValue` won't not work anymore.
 
 ```
-let method = mockMethod({
+let mockedMethod = mockMethod({
   sideEffect: [1, 4, 2]
 });
-method(); // => 1
-method(); // => 4
-method(); // => 2
-method(); // => undefined
+mockedMethod(); // => 1
+mockedMethod(); // => 4
+mockedMethod(); // => 2
+mockedMethod(); // => undefined
 ```
 
 It also accepts a mapping function.
 
 ```
 let resultMap = {'a': 1, 'b': 2, 'c': 3}
-let method = mockMethod({
+let mockedMethod = mockMethod({
   sideEffect: (key) => resultMap[key]
 });
-method('a'); // => 1
-method('b'); // => 2
-method('c'); // => 3
-method('d'); // => undefined
+mockedMethod('a'); // => 1
+mockedMethod('b'); // => 2
+mockedMethod('c'); // => 3
+mockedMethod('d'); // => undefined
 ```
 
 `mockedMethod` can raise an error defined by `options.sideEffect`.
