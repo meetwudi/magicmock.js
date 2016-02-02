@@ -11,7 +11,7 @@
          alt="Coverage Status">
   </a>
 
-  <a href="https://travis-ci.org/tjwudi/magicmock">
+  <a href="https://travis-ci.org/tjwudi/magicmock.js">
     <img src="https://img.shields.io/travis/tjwudi/magicmock.svg?style=flat-square"
          alt="Build Status">
   </a>
@@ -21,7 +21,7 @@
          alt="Downloads">
   </a>
 
-  <a href="https://david-dm.org/tjwudi/magicmock.svg">
+  <a href="https://david-dm.org/tjwudi/magicmock.js.svg">
     <img src="https://david-dm.org/tjwudi/magicmock.svg?style=flat-square"
          alt="Dependency Status">
   </a>
