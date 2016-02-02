@@ -59,6 +59,14 @@ test("mockMethod", (t) => {
     st.equal(method(1, 2), 102);
     st.end();
   });
+
+  t.test('sideEffect - should throw an error', (st) => {
+    let method = mockMethod({
+      sideEffect: new Error('My GOSH!')
+    });
+    t.throws(method);
+    t.end();
+  });
 });
 
 

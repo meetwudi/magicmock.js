@@ -7,12 +7,18 @@ export default function mockMethod () {
 
 mockMethod._create = function (options = {}) {
   let mockedMethod = this;
-  let {returnValue} = options;
+  let {
+    returnValue,
+    sideEffect
+  } = options;
   mockedMethod.invocations = [];
 
   let handler = {
     apply(method, context, methodArgs) {
       mockedMethod.invocations.push(methodArgs || []);
+      if (sideEffect) {
+        throw sideEffect;
+      }
       return returnValue;
     },
 

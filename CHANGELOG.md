@@ -6,6 +6,7 @@
 - [v1.1.0](#v110)
 - [v1.1.1](#v111)
 - [v1.2.0](#v120)
+- [v1.3.0](#v130)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -24,3 +25,8 @@
 ### v1.2.0
 
  * add mockObject
+
+### v1.3.0
+
+ * add sideEffect support
+ * several bug fixes and refactors

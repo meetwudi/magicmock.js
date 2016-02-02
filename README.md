@@ -51,7 +51,7 @@ Use magicmock with Node.js/io.js (with `--harmony_proxies`). Currently we only t
 
 ## Usage
 
-### Mock method
+### Mock method - mockMethod(options)
 
 The terms **method** and **function** are interchangeable here.
 
@@ -66,7 +66,7 @@ console.log(mockedMethod.calledWith(1, 2, 3)); // => true
 console.log(mockedMethod.calledWith(1, 2)); // => false
 ```
 
-##### mockedMethod.returnValue
+##### mockedMethod.returnValue / options.returnValue
 
 Setting `returnValue` property of the `mockedMethod` changes the return value when executing `mockedMethod`.
 
@@ -77,6 +77,17 @@ let mockedMethod = mockMethod({
   returnValue: 100
 });
 mockedMethod(1, 2, 3); // => 100
+```
+
+##### options.sideEffect
+
+`mockedMethod` can raise an error defined by `options.sideEffect`.
+
+```
+let mockedMethod = mockMethod({
+  sideEffect: new Error('My GOSH!')
+});
+mockedMethod(); // => throws error
 ```
 
 ##### mockedMethod.called()
