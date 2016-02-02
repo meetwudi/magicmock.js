@@ -1,4 +1,7 @@
-<big><h1 align="center">magicmock</h1></big>
+<big><h1 align="center">
+  <img src="misc/logo.svg"
+         alt="MagicMock.js">
+</h1></big>
 
 <p align="center">
   <a href="https://npmjs.org/package/magicmock">
@@ -33,9 +36,8 @@
 </p>
 
 <p align="center"><big>
-Mocked objects with ES6
+Mocked objects with ES6, inspired by python's `mock` module.
 </big></p>
-
 
 ## Install
 
