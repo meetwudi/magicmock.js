@@ -40,16 +40,41 @@ Mocked objects with ES6
 ## Install
 
 ```sh
-npm i -D magicmock
+npm i -D --save-dev magicmock
 ```
 
 ## Usage
 
-```js
-import magicmock from "magicmock"
+### Mock method
 
-magicmock() // true
+The term **method** and **function** is interchangeable here.
+
 ```
+import {mockMethod} from 'magicmock';
+
+let mockedMethod = mockMethod();
+mockedMethod.returnValue = 100;
+mockedMethod(1, 2, 3); // => 100
+console.log(mockedMethod.called()); // => true
+console.log(mockedMethod.calledWith(1, 2, 3)); // => true
+console.log(mockedMethod.calledWith(1, 2)); // => false
+```
+
+##### mockedMethod.returnValue
+
+Setting `returnValue` property of the `mockedMethod` changes the return value when executing `mockedMethod`.
+
+##### mockedMethod.called()
+
+Returns a boolean. Indicates whether the method was called or not.
+
+##### mockedMethod.calledWith(args)
+
+Returns a boolean. Indicates whether the method was called with exactly the same argument list or not.
+
+## Use for testing only
+
+magicmock was designed for testing. You don't want to run magicmock code in production code, neither client-side or server-side.
 
 ## License
 
