@@ -51,7 +51,7 @@ Use magicmock with Node.js/io.js (with `--harmony_reflect`). Currently we only t
 
 ### Mock method
 
-The term **method** and **function** is interchangeable here.
+The term **method** and **function** are interchangeable here.
 
 ```
 import {mockMethod} from 'magicmock';
