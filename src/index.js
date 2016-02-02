@@ -5,6 +5,6 @@ export function mockMethod(...args) {
   return _mockMethod._create(...args);
 }
 
-export function mockObject(...args) {
+export function mockObject({}) {
   throw new Error('Not implemented');
 }

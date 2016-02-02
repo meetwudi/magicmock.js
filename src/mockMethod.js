@@ -5,9 +5,9 @@ export default function mockMethod () {
   // Do not persist any state here since every mocked method shares this target object. Instead, states reside in mockMethod._create method.
 }
 
-mockMethod._create = function (...args) {
+mockMethod._create = function (options = {}) {
   let mockedMethod = this;
-  let returnValue = undefined;
+  let {returnValue} = options;
   mockedMethod.invocations = [];
 
   let handler = {

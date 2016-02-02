@@ -50,4 +50,13 @@ test("mockMethod", (t) => {
     st.equal(method(1, 2), 101);
     st.end();
   });
+
+  t.test('returnValue - as option', (st) => {
+    let method = mockMethod({
+      returnValue: 102
+    });
+    st.equal(method(), 102);
+    st.equal(method(1, 2), 102);
+    st.end();
+  });
 });
