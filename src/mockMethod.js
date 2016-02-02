@@ -21,7 +21,7 @@ mockMethod.create = function (options = {}) {
       // Record the invocation
       state.invocations.push(methodArgs || []);
       if (state.sideEffect) {
-        throw state.sideEffect;
+        return mockedMethod._causeSideEffect(methodArgs);
       }
       return state.returnValue;
     },
@@ -33,8 +33,19 @@ mockMethod.create = function (options = {}) {
     }
   };
 
-  mockedMethod.causeSideEffect = function (sideEffect) {
-
+  mockedMethod._causeSideEffect = function (methodArgs) {
+    if (state.sideEffect instanceof Error) {
+      throw state.sideEffect;
+    }
+    else if (typeof state.sideEffect === 'function') {
+      return state.sideEffect.apply(undefined, methodArgs);
+    }
+    else if (_.isArray(state.sideEffect) && state.sideEffect.length > 0) {
+      return state.sideEffect.shift();
+    }
+    else {
+      return undefined;
+    }
   };
 
   mockedMethod.calledWith = function (...args) {

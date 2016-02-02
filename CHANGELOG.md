@@ -30,3 +30,7 @@
 
  * add sideEffect support
  * several bug fixes and refactors
+
+### v1.3.1
+
+ * sideEffect now supports array of results, and a function as well

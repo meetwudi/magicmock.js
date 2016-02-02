@@ -67,6 +67,31 @@ test("mockMethod", (t) => {
     t.throws(method);
     t.end();
   });
+
+  t.test('sideEffect - handle function', (st) => {
+    let resultMap = {'a': 1, 'b': 2, 'c': 3}
+    let method = mockMethod({
+      sideEffect: (key) => resultMap[key]
+    });
+    st.equal(method('a'), 1);
+    st.equal(method('b'), 2);
+    st.equal(method('c'), 3);
+    st.equal(method('c'), 3);
+    st.equal(method('d'), undefined);
+    st.end();
+  });
+
+  t.test('sideEffect - handle array', (st) => {
+    let sideEffects = [100, 102, 104];
+    let method = mockMethod({
+      sideEffect: sideEffects
+    });
+    st.equal(method(), 100);
+    st.equal(method(101, 'a'), 102);
+    st.equal(method(), 104);
+    st.equal(method({ yo: 'man' }), undefined);
+    st.end();
+  });
 });
 
 
