@@ -78,7 +78,7 @@ Returns a boolean. Indicates whether the method was called with exactly the same
 
 ## Use for testing only
 
-magicmock was designed for testing. You don't want to run magicmock code in production code, neither client-side or server-side.
+magicmock was designed for testing. You don't want to run magicmock code in production code, neither client-side nor server-side.
 
 ## License
 
