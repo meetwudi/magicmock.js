@@ -2,44 +2,55 @@ import Reflect from 'harmony-reflect';
 import _ from 'lodash';
 
 export default function mockMethod () {
-  // Do not persist any state here since every mocked method shares this target object. Instead, states reside in mockMethod._create method.
 }
 
 mockMethod._create = function (options = {}) {
-  let mockedMethod = this;
   let {
     returnValue,
     sideEffect
   } = options;
-  mockedMethod.invocations = [];
+  let mockedMethod = function () {};
+  let state = {
+    returnValue,
+    invocations: [],
+    sideEffect
+  };
 
   let handler = {
     apply(method, context, methodArgs) {
-      mockedMethod.invocations.push(methodArgs || []);
-      if (sideEffect) {
-        throw sideEffect;
+      // Record the invocation
+      state.invocations.push(methodArgs || []);
+      if (state.sideEffect) {
+        throw state.sideEffect;
       }
-      return returnValue;
+      return state.returnValue;
     },
 
     set(target, propKey, value, receiver) {
       if (propKey === 'returnValue') {
-        returnValue = value;
+        state.returnValue = value;
       }
     }
   };
-  return new Proxy(mockMethod, handler);
-};
 
-mockMethod.calledWith = function (...args) {
-  for (let calledArgs of this.invocations) {
-    if (_.isEqual(calledArgs, args)) {
-      return true;
+  mockedMethod.causeSideEffect = function (sideEffect) {
+
+  };
+
+  mockedMethod.calledWith = function (...args) {
+    for (let calledArgs of state.invocations) {
+      if (_.isEqual(calledArgs, args)) {
+        return true;
+      }
     }
-  }
-  return false;
+    return false;
+  };
+
+  mockedMethod.called = function () {
+    return state.invocations.length > 0;
+  };
+
+  return new Proxy(mockedMethod, handler);
 };
 
-mockMethod.called = function () {
-  return this.invocations.length > 0;
-};
+
