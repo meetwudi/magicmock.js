@@ -1,5 +1,5 @@
 <big><h1 align="center">
-  <img src="https://raw.githubusercontent.com/tjwudi/magicmock.js/master/misc/logo.svg"
+  <img src="https://cdn.rawgit.com/tjwudi/magicmock.js/master/misc/logo.svg"
          alt="MagicMock.js">
 </h1></big>
 
