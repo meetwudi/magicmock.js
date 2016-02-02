@@ -127,6 +127,18 @@ Returns a boolean. Indicates whether the method was called or not.
 
 Returns a boolean. Indicates whether the method was called with exactly the same argument list or not.
 
+##### mockedMethod.getInvocationHistory()
+
+Returns an array of argument lists which `mockedMethod` was called.
+
+```
+let method = mockMethod();
+method();
+method(1);
+method({a: 1});
+method.getInvocationHistory(); // => [[], [1], [{a: 1}]]
+```
+
 ### Mock object - mockObject(options)
 
 `mockObject()` factory method creates an object `mockedObject`. When you access any of undefined property of `mockedObject`, it returns a `mockedMethod` instead of `undefined`.

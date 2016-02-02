@@ -40,3 +40,4 @@
 ### v1.4.0
  
  * add `callCount`
+ * add `getInvocationHistory`

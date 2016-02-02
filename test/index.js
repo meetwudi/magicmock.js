@@ -1,5 +1,6 @@
-import test from "tape"
-import {mockMethod, mockObject} from "../src"
+import test from "tape";
+import {mockMethod, mockObject} from "../src";
+import _ from 'lodash';
 
 test("mockMethod", (t) => {
   t.test('called', (st) => {
@@ -99,6 +100,15 @@ test("mockMethod", (t) => {
     st.equal(method(101, 'a'), 102);
     st.equal(method(), 104);
     st.equal(method({ yo: 'man' }), undefined);
+    st.end();
+  });
+
+  t.test('getInvocationHistory - should return array of invocation history', (st) => {
+    let method = mockMethod();
+    method();
+    method(1);
+    method({a: 1});
+    st.ok(_.isEqual(method.getInvocationHistory(), [[], [1], [{a: 1}]]));
     st.end();
   });
 });

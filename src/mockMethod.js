@@ -65,6 +65,10 @@ mockMethod.create = function (options = {}) {
     return state.invocations.length;
   };
 
+  mockedMethod.getInvocationHistory = () => {
+    return state.invocations;
+  };
+
   return new Proxy(mockedMethod, handler);
 };
 
