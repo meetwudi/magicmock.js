@@ -36,7 +36,7 @@
 </p>
 
 <p align="center"><big>
-Mocked objects with ES6, inspired by python's `mock` module.
+Mocked objects with ES6, inspired by python's unittest.mock module.
 </big></p>
 
 ## Install
