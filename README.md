@@ -68,6 +68,15 @@ console.log(mockedMethod.calledWith(1, 2)); // => false
 
 Setting `returnValue` property of the `mockedMethod` changes the return value when executing `mockedMethod`.
 
+`returnValue` is also accepted as an option to `mockMethod()` factory method. 
+
+```
+let mockedMethod = mockMethod({
+  returnValue: 100
+});
+mockedMethod(1, 2, 3); // => 100
+```
+
 ##### mockedMethod.called()
 
 Returns a boolean. Indicates whether the method was called or not.
