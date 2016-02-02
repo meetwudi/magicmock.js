@@ -47,7 +47,7 @@ npm i -D --save-dev magicmock
 
 ## Prerequisite
 
-Use magicmock with Node.js/io.js (with `--harmony_reflect`). Currently we only test it against Node.js 4 and Node.js 5. To request more engine support, please kindly send in an issue or pull request.
+Use magicmock with Node.js/io.js (with `--harmony_proxies`). Currently we only test it against Node.js 4 and Node.js 5. To request more engine support, please kindly send in an issue or pull request.
 
 ## Usage
 
@@ -123,6 +123,12 @@ console.log(mockedObject.myProperty); // => this is a string
 ## Use for testing only
 
 magicmock was designed for testing. You don't want to run magicmock code in production code, neither client-side nor server-side.
+
+If you are using [mocha](https://mochajs.org) to run test, simply add flag `--harmony_proxies`. You'd better use some ES6 transpiler like babel.
+
+```
+mocha --compilers js:babel-register --harmony_proxies
+```
 
 ## License
 
