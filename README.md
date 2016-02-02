@@ -45,7 +45,7 @@ npm i -D --save-dev magicmock
 
 ## Prerequisite
 
-Use magicmock with Node.js/io.js (with `--harmony_reflect`).
+Use magicmock with Node.js/io.js (with `--harmony_reflect`). Currently we only test it against Node.js 4 and Node.js 5. To request more engine support, please kindly send in an issue or pull request.
 
 ## Usage
 
