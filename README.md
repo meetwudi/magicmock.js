@@ -43,6 +43,10 @@ Mocked objects with ES6
 npm i -D --save-dev magicmock
 ```
 
+## Prerequisite
+
+Use magicmock with Node.js/io.js (with `--harmony_reflect`).
+
 ## Usage
 
 ### Mock method
