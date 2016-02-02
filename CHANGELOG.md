@@ -19,3 +19,7 @@
 ### v1.1.1
 
  * allow passing `returnValue` option to mockMethod constructor.
+
+### v1.2.0
+
+ * add mockObject

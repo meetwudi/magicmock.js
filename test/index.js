@@ -1,5 +1,5 @@
 import test from "tape"
-import {mockMethod} from "../src"
+import {mockMethod, mockObject} from "../src"
 
 test("mockMethod", (t) => {
   t.test('called', (st) => {
@@ -57,6 +57,28 @@ test("mockMethod", (t) => {
     });
     st.equal(method(), 102);
     st.equal(method(1, 2), 102);
+    st.end();
+  });
+});
+
+
+test('mockObject', (t) => {
+  t.test('should return mockedMethod for undefined properties', (st) => {
+    let mockedObject = mockObject();
+    mockedObject.testMethod.returnValue = 101;
+    st.equal(mockedObject.testMethod(), 101);
+    mockedObject.testMethod = 1; // should still assign correctly
+    st.equal(mockedObject.testMethod, 1);
+    st.end();
+  });
+
+  t.test('should not return mockedMethod for defined properties through options', (st) => {
+    let mockedObject = mockObject({
+      props: {
+        testMethod: 4
+      }
+    });
+    st.equal(mockedObject.testMethod, 4);
     st.end();
   });
 });

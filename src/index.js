@@ -1,10 +1,10 @@
 import _mockMethod from './mockMethod';
-import _mockObject from './mockObject';
+import MockObject from './mockObject';
 
 export function mockMethod(...args) {
   return _mockMethod._create(...args);
 }
 
-export function mockObject({}) {
-  throw new Error('Not implemented');
+export function mockObject(...args) {
+  return MockObject.create(...args);
 }

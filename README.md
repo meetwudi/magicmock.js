@@ -51,7 +51,7 @@ Use magicmock with Node.js/io.js (with `--harmony_reflect`). Currently we only t
 
 ### Mock method
 
-The term **method** and **function** are interchangeable here.
+The terms **method** and **function** are interchangeable here.
 
 ```
 import {mockMethod} from 'magicmock';
@@ -84,6 +84,39 @@ Returns a boolean. Indicates whether the method was called or not.
 ##### mockedMethod.calledWith(args)
 
 Returns a boolean. Indicates whether the method was called with exactly the same argument list or not.
+
+### Mock object
+
+`mockObject()` factory method creates an object `mockedObject`. When you access any of undefined property of `mockedObject`, it returns a `mockedMethod` instead of `undefined`.
+
+```
+let mockedObject = mockObject();
+// mockedObject.testMethod is undefined
+mockedObject.testMethod.returnValue = 101;
+console.log(mockedObject.testMethod()); // => 101
+```
+
+You could still assign property value to `mockedObject` after its creation.
+
+```
+let mockedObject = mockObject();
+// mockedObject.testMethod is undefined
+mockedObject.testMethod.returnValue = 101;
+console.log(mockedObject.testMethod()); // => 101
+mockedObject.testMethod = 'not a method anymore';
+console.log(mockedObject.testMethod()); // => 'not a method anymore'
+```
+
+`mockObject()` factory method accepts an option with `props` key, which defines properties upon creation.
+
+```
+let mockedObject = mockObject({
+  props: {
+    myProperty: 'this is a string'
+  }
+});
+console.log(mockedObject.myProperty); // => this is a string
+```
 
 ## Use for testing only
 
