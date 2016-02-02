@@ -7,6 +7,7 @@
 - [v1.1.1](#v111)
 - [v1.2.0](#v120)
 - [v1.3.0](#v130)
+- [v1.3.1](#v131)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
