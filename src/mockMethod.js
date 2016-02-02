@@ -33,7 +33,7 @@ mockMethod.create = function (options = {}) {
     }
   };
 
-  mockedMethod._causeSideEffect = function (methodArgs) {
+  mockedMethod._causeSideEffect = (methodArgs) => {
     if (state.sideEffect instanceof Error) {
       throw state.sideEffect;
     }
@@ -48,7 +48,7 @@ mockMethod.create = function (options = {}) {
     }
   };
 
-  mockedMethod.calledWith = function (...args) {
+  mockedMethod.calledWith = (...args) => {
     for (let calledArgs of state.invocations) {
       if (_.isEqual(calledArgs, args)) {
         return true;
@@ -57,8 +57,12 @@ mockMethod.create = function (options = {}) {
     return false;
   };
 
-  mockedMethod.called = function () {
+  mockedMethod.called = () => {
     return state.invocations.length > 0;
+  };
+
+  mockedMethod.callCount = () => {
+    return state.invocations.length;
   };
 
   return new Proxy(mockedMethod, handler);

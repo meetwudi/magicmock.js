@@ -115,6 +115,10 @@ let mockedMethod = mockMethod({
 mockedMethod(); // => throws error
 ```
 
+##### mockedMethod.callCount()
+
+Returns how many times was the method called.
+
 ##### mockedMethod.called()
 
 Returns a boolean. Indicates whether the method was called or not.

@@ -8,6 +8,7 @@
 - [v1.2.0](#v120)
 - [v1.3.0](#v130)
 - [v1.3.1](#v131)
+- [v1.4.0](#v140)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -35,3 +36,7 @@
 ### v1.3.1
 
  * sideEffect now supports array of results, and a function as well
+
+### v1.4.0
+ 
+ * add `callCount`

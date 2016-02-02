@@ -35,6 +35,15 @@ test("mockMethod", (t) => {
     st.end();
   });
 
+  t.test('callCount - should return counts called', (st) => {
+    let method = mockMethod();
+    method();
+    method(1);
+    method(1, 2);
+    st.equal(method.callCount(), 3);
+    st.end();
+  });
+
   t.test('returnValue - without arguments', (st) => {
     let method = mockMethod();
     st.equal(method(), undefined);
