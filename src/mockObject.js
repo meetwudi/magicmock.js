@@ -11,7 +11,7 @@ export default class MockObject {
       get(target, propKey, receiver) {
         let value = Reflect.get(target, propKey, receiver);
         if (!value) {
-          value = mockMethod._create();
+          value = mockMethod.create();
           Reflect.set(target, propKey, value, receiver);
         }
         return value;

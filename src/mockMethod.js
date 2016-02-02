@@ -4,7 +4,7 @@ import _ from 'lodash';
 export default function mockMethod () {
 }
 
-mockMethod._create = function (options = {}) {
+mockMethod.create = function (options = {}) {
   let {
     returnValue,
     sideEffect
