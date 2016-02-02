@@ -123,7 +123,7 @@ Returns a boolean. Indicates whether the method was called or not.
 
 Returns a boolean. Indicates whether the method was called with exactly the same argument list or not.
 
-### Mock object
+### Mock object - mockObject(options)
 
 `mockObject()` factory method creates an object `mockedObject`. When you access any of undefined property of `mockedObject`, it returns a `mockedMethod` instead of `undefined`.
 
