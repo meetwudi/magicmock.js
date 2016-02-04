@@ -41,3 +41,7 @@
  
  * add `callCount`
  * add `getInvocationHistory`
+
+### v1.5.0
+
+ * add async execution

@@ -79,6 +79,32 @@ let mockedMethod = mockMethod({
 mockedMethod(1, 2, 3); // => 100
 ```
 
+##### options.async
+
+Accepts either 'callback' or 'promise'. `mockedMethod` will simulate an asynchronous execution, then execute callback or return a promise.
+
+```
+let mockedMethod = mockMethod({
+  async: 'callback'
+});
+mockedMethod(1, 2, () => {
+  // callback called
+});
+```
+
+In callback mode, callback function is always the last argument of `mockedMethod`.
+
+```
+let mockedMethod = mockMethod({
+  async: 'promise'
+});
+mockedMethod(1, 2).then(() => {
+  // promise resolved
+});
+```
+
+In promise mode, `mockedMethod` actually returns a immediately resolved promise.
+
 ##### options.sideEffect
 
 `options.sideEffect` allows `mockedMethod` returns different values depending on side effects from outside world. If `sideEffect` was defined, `returnValue` won't not work anymore.

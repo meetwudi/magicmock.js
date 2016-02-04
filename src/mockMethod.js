@@ -4,15 +4,20 @@ import _ from 'lodash';
 export default function mockMethod () {
 }
 
+const ASYNC_CALLBACK = 'callback';
+const ASYNC_PROMISE = 'promise';
+
 mockMethod.create = function (options = {}) {
   let {
+    async,
     returnValue,
     sideEffect
   } = options;
   let mockedMethod = function () {};
   let state = {
-    returnValue,
+    async,
     invocations: [],
+    returnValue,
     sideEffect
   };
 
@@ -21,7 +26,11 @@ mockMethod.create = function (options = {}) {
       // Record the invocation
       state.invocations.push(methodArgs || []);
       if (state.sideEffect) {
-        return mockedMethod._causeSideEffect(methodArgs);
+        return mockedMethod._causeSideEffect(method, context, methodArgs);
+      }
+      if (state.async) {
+        // mocking an async execution
+        return mockedMethod._runAsync(method, context, methodArgs);
       }
       return state.returnValue;
     },
@@ -33,7 +42,7 @@ mockMethod.create = function (options = {}) {
     }
   };
 
-  mockedMethod._causeSideEffect = (methodArgs) => {
+  mockedMethod._causeSideEffect = (method, context, methodArgs) => {
     if (state.sideEffect instanceof Error) {
       throw state.sideEffect;
     }
@@ -45,6 +54,24 @@ mockMethod.create = function (options = {}) {
     }
     else {
       return undefined;
+    }
+  };
+
+  mockedMethod._runAsync = (method, context, methodArgs) => {
+    switch (state.async) {
+      case ASYNC_CALLBACK:
+        let callbackFn = _.last(methodArgs);
+        if (typeof callbackFn !== 'function') {
+          throw new Error('In callback mode, mocked method requires the last argument to be a function');
+        }
+        setTimeout(() => {
+          callbackFn.apply(context);
+        }, 0);
+        return state.returnValue;
+      case ASYNC_PROMISE:
+        return Promise.resolve();
+      default:
+        throw new Error('Not supported async execution model.');
     }
   };
 

@@ -111,6 +111,30 @@ test("mockMethod", (t) => {
     st.ok(_.isEqual(method.getInvocationHistory(), [[], [1], [{a: 1}]]));
     st.end();
   });
+
+  t.test('async - should execute callback function', (st) => {
+    st.plan(1);
+    let method = mockMethod({
+      async: 'callback'
+    });
+    let callbackCalled = false;
+    method(1, 2, function () {
+      callbackCalled = true;
+      st.end();
+    });
+    st.equal(callbackCalled, false);
+  });
+
+  t.test('async - should return a promise', (st) => {
+    let method = mockMethod({
+      async: 'promise'
+    });
+    st.plan(1);
+    method().then(() => {
+      st.pass();
+      st.end();
+    });
+  });
 });
 
 

@@ -53,10 +53,10 @@
     "rimraf": "*",
     "tap-spec": "*",
     "tape": "*",
-    "watch": "*"
+    "watch": "*",
+    "lodash": "^4.1.0"
   },
   "dependencies": {
-    "harmony-reflect": "^1.4.2",
-    "lodash": "^4.1.0"
+    "harmony-reflect": "^1.4.2"
   }
 }
