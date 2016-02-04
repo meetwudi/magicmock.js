@@ -115,7 +115,7 @@ test("mockMethod", (t) => {
   t.test('async - should execute callback function', (st) => {
     st.plan(1);
     let method = mockMethod({
-      async: 'callback'
+      asyncMode: 'callback'
     });
     let callbackCalled = false;
     method(1, 2, function () {
@@ -127,7 +127,7 @@ test("mockMethod", (t) => {
 
   t.test('async - should return a promise', (st) => {
     let method = mockMethod({
-      async: 'promise'
+      asyncMode: 'promise'
     });
     st.plan(1);
     method().then(() => {

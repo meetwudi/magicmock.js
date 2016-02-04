@@ -9,13 +9,13 @@ const ASYNC_PROMISE = 'promise';
 
 mockMethod.create = function (options = {}) {
   let {
-    async,
+    asyncMode,
     returnValue,
     sideEffect
   } = options;
   let mockedMethod = function () {};
   let state = {
-    async,
+    asyncMode,
     invocations: [],
     returnValue,
     sideEffect
@@ -28,7 +28,7 @@ mockMethod.create = function (options = {}) {
       if (state.sideEffect) {
         return mockedMethod._causeSideEffect(method, context, methodArgs);
       }
-      if (state.async) {
+      if (state.asyncMode) {
         // mocking an async execution
         return mockedMethod._runAsync(method, context, methodArgs);
       }
@@ -58,7 +58,7 @@ mockMethod.create = function (options = {}) {
   };
 
   mockedMethod._runAsync = (method, context, methodArgs) => {
-    switch (state.async) {
+    switch (state.asyncMode) {
       case ASYNC_CALLBACK:
         let callbackFn = _.last(methodArgs);
         if (typeof callbackFn !== 'function') {
