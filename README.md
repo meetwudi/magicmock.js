@@ -47,7 +47,7 @@ npm i -D --save-dev magicmock
 
 ## Prerequisite
 
-Use magicmock with Node.js/io.js (with `--harmony_proxies`). Currently we only test it against Node.js 4 and Node.js 5. To request more engine support, please kindly send in an issue or pull request.
+Use magicmock with Node.js/io.js (with `--harmony_proxies`). Currently we only test it against Node.js 4, Node.js 5 and io.js. To request more engine support, please kindly send in an issue or pull request.
 
 ## Usage
 
